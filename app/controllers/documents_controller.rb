@@ -76,6 +76,7 @@ class DocumentsController < ApplicationController
       @document = Document.find(params[:id])
     end
 
+    
     # Only allow a list of trusted parameters through.
     def document_params
       params.require(:document).permit(:user_id, :file, :processed)

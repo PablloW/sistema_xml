@@ -1,6 +1,7 @@
 class ProcessDocumentJob #< ApplicationJob
   include Sidekiq::Job
 
+  
   def perform(document_id)
     document = Document.find(document_id)
     xml_content = Nokogiri::XML(document.file.download)
