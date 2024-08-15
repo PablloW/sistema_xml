@@ -1,0 +1,50 @@
+<h1>Relatório do Documento Fiscal</h1>
+
+  <h2>Dados do Documento Fiscal</h2>
+  <p><strong>Série:</strong> <%= @document.serie %></p>
+  <p><strong>Número da Nota Fiscal:</strong> <%= @document.nNF %></p>
+  <p><strong>Data e Hora de Emissão:</strong> <%= @document.dhEmi %></p>
+  <p><strong>Emitente:</strong> <%= @document.emit %></p>
+  <p><strong>Destinatário:</strong> <%= @document.dest %></p>
+  
+  <h2>Produtos Listados</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>NCM</th>
+        <th>CFOP</th>
+        <th>Unidade</th>
+        <th>Quantidade</th>
+        <th>Valor Unitário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @document.products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.ncm %></td>
+          <td><%= product.cfop %></td>
+          <td><%= product.uCom %></td>
+          <td><%= product.qCom %></td>
+          <td><%= product.vUnCom %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <h2>Impostos Associados</h2>
+  <% if @document.taxes.any? %>
+    <% tax = @document.taxes.first %> <!-- Assume que há pelo menos um imposto -->
+    <p><strong>ICMS:</strong> <%= tax.icms %></p>
+    <p><strong>IPI:</strong> <%= tax.ipi %></p>
+    <p><strong>PIS:</strong> <%= tax.pis %></p>
+    <p><strong>COFINS:</strong> <%= tax.cofins %></p>
+  <% else %>
+    <p>Não há impostos associados.</p>
+  <% end %>
+  
+  <h2>Totalizadores</h2>
+  <p><strong>Total Produtos:</strong> <%= @document.total_products %></p>
+  <p><strong>Total Impostos:</strong> <%= @document.total_taxes %></p>
+  

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  icms: 9.99
+  ipi: 9.99
+  pis: 9.99
+  cofins: 9.99
+  document: one
+
+two:
+  icms: 9.99
+  ipi: 9.99
+  pis: 9.99
+  cofins: 9.99
+  document: two
