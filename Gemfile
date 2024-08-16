@@ -38,6 +38,10 @@ gem 'redis'
 # Para manipulação de XML
 gem 'nokogiri'
 
+# Compilação SCSS p/ CSS
+gem 'sassc-rails'
+
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

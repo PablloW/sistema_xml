@@ -1,0 +1,124 @@
+/* login.css.scss */
+
+.container-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .container-login img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .login-form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group.form-check {
+    display: flex;
+    align-items: center; /* Alinha verticalmente o checkbox e o texto */
+    justify-content: space-between; /* Espaça os itens para que o link "Esqueceu a senha?" fique à direita */
+  }
+
+  .form-check-input {
+    margin-right: 5px; 
+    //margin-right: 5px; /* Adiciona um pequeno espaçamento entre o checkbox e o texto */
+    //margin-top: 0; /* Remove qualquer margem superior para alinhamento */
+    //vertical-align: middle; /* Alinha o checkbox ao meio da linha de texto */
+  }
+  
+  .form-check-label {
+    margin-bottom: 0; 
+    //margin-left: 0px;
+  }
+
+  .float-right {
+    margin-left: auto; /* Move o link "Esqueceu a senha?" para a extrema direita */
+  }
+  
+  .forgot-password-link {
+    margin-left: auto;
+    font-size: 14px;
+    white-space: nowrap; /* Garante que o texto não quebre para a próxima linha */
+  }
+  
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .form-check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .hr {
+    width: 100%;
+    border-top: 1px solid #ccc;
+    margin: 15px 0;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-icon img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+
+  //.container-login {
+  //  max-width: 400px;
+  //  margin: 0 auto;
+  //}
+  
+  //.text-center.mt-3 {
+  //  margin-top: 20px;
+  //}
+  

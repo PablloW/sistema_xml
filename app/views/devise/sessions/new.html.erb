@@ -1,0 +1,55 @@
+<div class="container-login">
+    <div class="login-image">
+      <%= image_tag "login/login.svg", alt: "Login" %>
+    </div>
+  
+    <div class="login-form">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
+        <h2 class="text-center">LOGIN</h2>
+        <div class="form-group">
+          <%= f.label :email, "E-mail", class: "sr-only" %>
+          <%= f.email_field :email, placeholder: "@maino.com.br", class: "form-control" %>
+        </div>
+  
+        <div class="form-group">
+          <%= f.label :password, "Password", class: "sr-only" %>
+          <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+        </div>
+  
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group form-check d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-right">
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              <%= f.label :remember_me, "Remember me", class: "form-check-label" %>
+            </div>
+            <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "forgot-password-link" %>
+          </div>
+        <% end %>
+  
+        <div class="form-group">
+          <%= f.submit "Entrar", class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+  
+      <div class="text-center">
+        <p>Não tem uma conta? <%= link_to "Inscrever-se", new_registration_path(resource_name) %></p>
+      </div>
+  
+      <hr>
+  
+      <div class="text-center">
+        <p>Logar Com</p>
+        <div class="social-icons">
+          <%= link_to "#", class: "social-icon" do %>
+            <%= image_tag "login/facebook.png", alt: "Facebook" %>
+          <% end %>
+          <%= link_to "#", class: "social-icon" do %>
+            <%= image_tag "login/google.png", alt: "Google" %>
+          <% end %>
+          <%= link_to "#", class: "social-icon" do %>
+            <%= image_tag "login/apple.png", alt: "Apple" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
