@@ -63,6 +63,14 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def index
+    if params[:query].present?
+      @documents = Document.joins(:file_attachment => :blob).where("active_storage_blobs.filename LIKE ?", "%#{params[:query]}%")
+    else
+      @documents = Document.all
+    end
+  end
+
   # GET /documents/1/report
   def report
     respond_to do |format|

@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-  # Rota para o índice de documentos como a página inicial
-  root 'documents#index'
+  devise_for :users
+  get 'documents/index'
+  resources :documents
+  resources :products
+  
+  root to:'documents#index'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # Rota para o relatório de documentos
   resources :documents do
     member do
       get 'report'
     end
   end
-
-  # Configurações do Devise para autenticação de usuários
-  devise_for :users
-
-  # Rota para verificar o status da aplicação
-  get "up" => "rails/health#show", as: :rails_health_check
 end

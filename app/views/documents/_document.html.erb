@@ -1,16 +1,18 @@
 <div id="<%= dom_id document %>">
   <p>
-    <strong>User:</strong>
-    <%= document.user_id %>
+    <strong>Usuário:</strong>
+    <%= document.user_id %> -
+    <a class="header-logout">
+     <%= current_user.email %> </a>
   </p>
 
   <p>
-    <strong>File:</strong>
+    <strong>Arquivo:</strong>
     <%= link_to document.file.filename, document.file if document.file.attached? %>
   </p>
 
   <p>
-    <strong>Processed:</strong>
+    <strong>Processado:</strong>
     <%= document.processed %>
   </p>
 

@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[7.1]
       t.string :uCom
       t.decimal :qCom
       t.decimal :vUnCom
-      t.references :document, null: false, foreign_key: true
+      t.references :document, foreign_key: { on_delete: :nullify }
 
       t.timestamps
     end

@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_193855) do
     t.string "uCom"
     t.decimal "qCom"
     t.decimal "vUnCom"
-    t.integer "document_id", null: false
+    t.integer "document_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["document_id"], name: "index_products_on_document_id"
@@ -93,6 +93,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_193855) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "documents", "users"
-  add_foreign_key "products", "documents"
+  add_foreign_key "products", "documents", on_delete: :nullify
   add_foreign_key "taxes", "documents"
 end

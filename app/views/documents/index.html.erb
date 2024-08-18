@@ -1,14 +1,117 @@
-<p style="color: green"><%= notice %></p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="SALES - Project">
+    <meta name="generator" content="Hugo 0.104.2">
+    
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;   
 
-<h1>Documents</h1>
+        user-select: none;
+      }
 
-<div id="documents">
-  <% @documents.each do |document| %>
-    <%= render document %>
-    <p>
-      <%= link_to "Show this document", document %>
-    </p>
-  <% end %>
-</div>
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;   
 
-<%= link_to "New document", new_document_path %>
+        }
+      }
+
+      .pequeno {
+        width: 20%;
+      }
+
+      .medio {
+        width: 85%;
+      }
+
+      /* New styles for the header */
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #292b2c;
+        color: #fff;
+        padding: 10px 15px;
+      }
+
+      .header-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .header-logout {
+        text-decoration: none;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header-container">
+      <a class="header-brand col-md-3 col-lg-2 me-0 px-3 fs-6">Sistema - XML</a>
+      <% if user_signed_in? %> <div class="nav-item text-nowrap">
+          <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="header-logout"> <%= current_user.email %> </a> 
+                <%= form_with url: destroy_user_session_path, method: :delete do %>
+                    <%= submit_tag 'Sair' %>
+                <% end %>
+              </li>
+          </ul>
+        </div>
+      <% end %>
+    </header>
+    <header class="header-container">
+      <%= form_with url: documents_path, method: :get, local: true, class: "d-flex justify-content-end mb-3" do %>
+        <div class="input-group">
+          <input type="text" name="query" class="form-control" placeholder="nome do arquivo" value="<%= params[:query] %>">
+          <button class="btn btn-outline-secondary" type="submit">Pesquisa</button>
+        </div>
+      <% end %>
+    </header>
+      <div class="row">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Painel</h1>
+            <div class="btn-toolbar mb-2 mb-md-0"></div>
+          </div>
+
+          <h2>Documentos</h2>
+        <p style="color: green"><%= notice %></p>
+
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                <th>Nome Arquivo</th>
+                <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% if @documents.empty? %>
+                <tr>
+                  <td colspan="2">No documents found</td>
+                </tr>
+              <% else %>
+                <% @documents.each do |document| %>
+                  <tr>
+                    <td><%= document.file.filename.to_s if document.file.attached? %></td>
+                    <td>
+                      <%= link_to "Abrir", document, class: "btn btn-sm btn-primary" %>
+                      <%= link_to "Editar", edit_document_path(document) %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+
+        </table>
+
+        <%= link_to "Novo", new_document_path, class: "btn btn-primary" %>
