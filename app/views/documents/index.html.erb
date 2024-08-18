@@ -4,11 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="SALES - Project">
+    <meta name="author - Pablo Wendrey" content="Sistema - XML">
     <meta name="generator" content="Hugo 0.104.2">
-    
-    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="home.css">
     
     <style>
       .bd-placeholder-img {
@@ -38,7 +35,16 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #292b2c;
+        background-color: #00a8ff;
+        color: #fff;
+        padding: 10px 15px;
+      }
+
+      .header-zip-search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
         color: #fff;
         padding: 10px 15px;
       }
@@ -69,7 +75,15 @@
         </div>
       <% end %>
     </header>
-    <header class="header-container">
+    <header class="header-zip-search">
+      <%= form_with url: upload_documents_path, local: true, method: :post, enctype: "multipart/form-data" do |form| %>
+        <div class="form-group">
+          <%= form.label :file, "Upload de ZIP contendo XMLs" %>
+          <%= form.file_field :file, class: "form-control" %>
+        </div>
+        <%= form.submit "Importar Documentos", class: "btn btn-primary" %>
+      <% end %>
+    
       <%= form_with url: documents_path, method: :get, local: true, class: "d-flex justify-content-end mb-3" do %>
         <div class="input-group">
           <input type="text" name="query" class="form-control" placeholder="nome do arquivo" value="<%= params[:query] %>">

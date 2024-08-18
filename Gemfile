@@ -43,6 +43,12 @@ gem 'sassc-rails'
 
 gem 'ransack'
 
+gem 'rubyzip', '~> 2.3'
+
+gem 'rubyXL'
+
+gem 'caxlsx'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -63,6 +69,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'rspec-rails', '~> 5.0.0'
   gem "debug", platforms: %i[ mri windows ]
 end
 
